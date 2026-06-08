@@ -1,0 +1,675 @@
+/* ============================================================
+   POSON POYA WEBSITE - style.css
+   Festive deep-night sky theme with gold & saffron accents
+   ============================================================ */
+
+/* ---- RESET & BASE ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night: #060d1f;
+  --deep-blue: #0a1540;
+  --mid-blue: #0d2060;
+  --gold: #FFB300;
+  --gold-light: #FFD54F;
+  --saffron: #FF6F00;
+  --moon-white: #FFF8E1;
+  --pink-lantern: #F06292;
+  --purple-lantern: #CE93D8;
+  --green-lantern: #A5D6A7;
+  --text-light: #EDE7D9;
+  --text-dim: #9EA8C4;
+  --card-bg: rgba(255,255,255,0.05);
+  --card-border: rgba(255,179,0,0.2);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--night);
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ---- STARS BACKGROUND ---- */
+#stars-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.4); }
+}
+
+/* ---- FLOATING DECORATIVE LANTERNS ---- */
+#floating-lanterns {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.deco-lantern {
+  position: absolute;
+  font-size: 1.8rem;
+  animation: floatUp var(--spd, 12s) linear infinite;
+  opacity: 0.35;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(110vh) rotate(-5deg); opacity: 0; }
+  10%  { opacity: 0.35; }
+  90%  { opacity: 0.25; }
+  100% { transform: translateY(-15vh) rotate(8deg); opacity: 0; }
+}
+
+/* ---- MUSIC BUTTON ---- */
+#music-btn {
+  position: fixed;
+  top: 1.2rem; right: 1.2rem;
+  z-index: 999;
+  background: rgba(255,179,0,0.15);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.3rem;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+#music-btn:hover { background: rgba(255,179,0,0.3); transform: scale(1.1); }
+
+/* ---- GENERAL LAYOUT ---- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 0;
+}
+
+h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 20px rgba(255,179,0,0.4);
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--text-dim);
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   SECTION 1: HERO
+   ============================================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #0d2060 0%, #060d1f 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.sinhala-text {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: clamp(1rem, 3.5vw, 1.5rem);
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 15px rgba(255, 213, 79, 0.5);
+}
+
+.hero-content h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: var(--moon-white);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(255,179,0,0.5), 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-content h1 span {
+  color: var(--gold);
+  display: block;
+  font-size: 0.6em;
+  letter-spacing: 0.3em;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+  margin: 1rem 0 2.5rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---- MOON ---- */
+.moon {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  z-index: 1;
+  text-align: center;
+}
+.moon-face { font-size: clamp(4rem, 10vw, 8rem); line-height: 1; position: relative; z-index: 2; }
+.moon-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%; height: 130%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,248,225,0.25) 0%, transparent 70%);
+  animation: moonPulse 4s ease-in-out infinite alternate;
+}
+@keyframes moonPulse {
+  0%  { transform: translate(-50%,-50%) scale(1);   opacity: 0.6; }
+  100%{ transform: translate(-50%,-50%) scale(1.15); opacity: 1;   }
+}
+
+/* ---- MIHINTALE SILHOUETTE ---- */
+.mihintale-silhouette {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 22vh;
+  background: linear-gradient(to top, #030810 30%, transparent 100%);
+  clip-path: polygon(
+    0% 100%, 0% 75%, 5% 72%, 10% 55%, 14% 52%, 16% 40%, 18% 38%,
+    20% 20%, 21% 18%, 22% 20%, 24% 38%, 28% 42%, 32% 60%,
+    36% 55%, 40% 65%, 45% 70%, 50% 65%, 55% 72%, 60% 68%,
+    65% 72%, 70% 68%, 75% 75%, 80% 70%, 85% 78%, 90% 74%, 95% 80%, 100% 75%, 100% 100%
+  );
+  z-index: 1;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--saffron) 100%);
+  color: #1a0a00;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255,111,0,0.4);
+  letter-spacing: 0.05em;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(255,111,0,0.6);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--gold);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+.btn-secondary:hover {
+  background: rgba(255,179,0,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(255,179,0,0.25);
+}
+
+/* ============================================================
+   SECTION 2: ABOUT
+   ============================================================ */
+#about {
+  background: linear-gradient(180deg, transparent 0%, rgba(13,32,96,0.3) 50%, transparent 100%);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.about-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 40px rgba(255,179,0,0.12);
+}
+.about-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+.about-card h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.95rem;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+}
+.about-card p { color: var(--text-dim); font-size: 0.92rem; }
+
+/* ============================================================
+   SECTION 3: LANTERN GAME
+   ============================================================ */
+#game {
+  background: radial-gradient(ellipse at center, rgba(13,32,96,0.4) 0%, transparent 70%);
+}
+
+.game-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.game-stat {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 0.6rem 1.4rem;
+  text-align: center;
+  min-width: 80px;
+}
+.stat-label { display: block; font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+.stat-value { display: block; font-size: 1.6rem; font-weight: 700; color: var(--gold); }
+
+#restart-btn {
+  background: rgba(255,179,0,0.1);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+#restart-btn:hover { background: rgba(255,179,0,0.2); }
+
+/* ---- GAME BOARD ---- */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.game-card {
+  aspect-ratio: 3/4;
+  border-radius: 14px;
+  cursor: pointer;
+  perspective: 600px;
+  position: relative;
+}
+
+.card-inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.game-card.flipped .card-inner  { transform: rotateY(180deg); }
+.game-card.matched .card-inner  { transform: rotateY(180deg); }
+.game-card.matched .card-back   { box-shadow: 0 0 18px rgba(255,179,0,0.7); border-color: var(--gold); }
+
+.card-front, .card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  backface-visibility: hidden;
+  border: 1.5px solid var(--card-border);
+}
+
+.card-front {
+  background: linear-gradient(145deg, #0d1e4a, #1a3070);
+  font-size: 1.8rem;
+}
+
+.card-back {
+  background: linear-gradient(145deg, #1a0a00, #3d1c00);
+  transform: rotateY(180deg);
+  border-color: rgba(255,179,0,0.3);
+}
+
+.card-front .card-hidden-symbol {
+  color: rgba(255,179,0,0.2);
+  font-size: 2rem;
+}
+
+/* ---- GAME MESSAGE OVERLAY ---- */
+#game-message {
+  position: fixed;
+  inset: 0;
+  background: rgba(6,13,31,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+}
+#game-message.hidden { display: none; }
+
+.message-box {
+  background: linear-gradient(145deg, #0d1e4a, #1a0a00);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 0 60px rgba(255,179,0,0.3);
+}
+#message-icon { font-size: 4rem; margin-bottom: 0.5rem; }
+.message-box h3 {
+  font-family: 'Cinzel Decorative', serif;
+  color: var(--gold);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.message-box p { color: var(--text-dim); margin-bottom: 1.5rem; }
+
+/* ============================================================
+   SECTION 4: WISH / LANTERN LAUNCHER
+   ============================================================ */
+.wish-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(20,5,40,0.4) 50%, transparent 100%);
+}
+
+.wish-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 700px) {
+  .wish-area { grid-template-columns: 1fr; }
+  #game-board { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+}
+
+.wish-form {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wish-form input,
+.wish-form textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,179,0,0.25);
+  border-radius: 10px;
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  resize: none;
+  transition: border-color 0.3s;
+}
+.wish-form input::placeholder,
+.wish-form textarea::placeholder { color: var(--text-dim); }
+.wish-form input:focus,
+.wish-form textarea:focus { border-color: var(--gold); }
+
+.color-picker span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+.colors { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.color-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.color-btn:hover { transform: scale(1.2); }
+.color-btn.active { border-color: white; transform: scale(1.2); }
+
+/* ---- WISH SKY ---- */
+.wish-sky {
+  background: radial-gradient(ellipse at bottom, #0a1540 0%, #030810 70%);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+}
+.sky-label {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* ---- WISH LANTERN BUBBLES ---- */
+.wish-lantern {
+  position: absolute;
+  bottom: 10%;
+  border-radius: 50% 50% 45% 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.75);
+  animation: riseUp 8s ease-in forwards;
+  text-align: center;
+  padding: 4px 6px;
+  line-height: 1.2;
+  cursor: default;
+  box-shadow: 0 0 18px rgba(255,255,255,0.2);
+}
+@keyframes riseUp {
+  0%   { transform: translateY(0) translateX(0) rotate(-3deg); opacity: 0; }
+  5%   { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(-110%) translateX(10px) rotate(5deg); opacity: 0; }
+}
+.wish-lantern::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 18px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   SECTION 5: GREETING CARD CREATOR
+   ============================================================ */
+#greeting-card {
+  background: linear-gradient(180deg, transparent 0%, rgba(13,32,96,0.35) 50%, transparent 100%);
+}
+
+.card-creator {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 780px) {
+  .card-creator { grid-template-columns: 1fr; }
+}
+
+/* ---- Controls Panel ---- */
+.card-controls {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card-controls label {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.4rem;
+}
+
+.card-controls input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,179,0,0.25);
+  border-radius: 10px;
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.7rem 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+.card-controls input::placeholder { color: var(--text-dim); }
+.card-controls input:focus { border-color: var(--gold); }
+
+/* ---- Name color swatches ---- */
+.name-colors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.nc-btn {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.nc-btn:hover    { transform: scale(1.2); }
+.nc-btn.active   { border-color: white; transform: scale(1.2); }
+
+/* ---- Style buttons ---- */
+.style-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.style-btn {
+  background: rgba(255,179,0,0.08);
+  border: 1px solid rgba(255,179,0,0.3);
+  color: var(--text-dim);
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.25s;
+}
+.style-btn:hover  { border-color: var(--gold); color: var(--text-light); }
+.style-btn.active { background: rgba(255,179,0,0.2); border-color: var(--gold); color: var(--gold); }
+
+/* ---- Action buttons row ---- */
+.card-action-btns {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* ---- Canvas Preview ---- */
+.card-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#greeting-canvas {
+  width: 100%;
+  max-width: 680px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,179,0,0.25);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  display: block;
+}
+
+.canvas-hint {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+.canvas-hint strong { color: var(--gold); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, #030810 100%);
+  text-align: center;
+  padding: 4rem 1rem 2.5rem;
+  border-top: 1px solid rgba(255,179,0,0.1);
+}
+.footer-moon { font-size: 3rem; margin-bottom: 1rem; }
+.footer-sinhala {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+.footer-eng { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem; }
+.footer-copy { color: rgba(255,255,255,0.25); font-size: 0.78rem; }
